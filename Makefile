@@ -7,6 +7,10 @@ run:
 	sudo docker run --name mongo -it -p 127.0.0.1:27017:27017 -v /media/mongo:/data/db --rm mongo
 .PHONY: run
 
+node:
+	MONGO_CONNECTION_STRING=$(MONGO_CONNECTION_STRING) node index.js
+.PHONY:
+
 mongosh shell sh:
 	sudo docker exec -it $(MONGO_CONTAINER_NAME) mongosh
 .PHONY: mongosh shell sh
